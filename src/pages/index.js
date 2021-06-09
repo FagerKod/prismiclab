@@ -1,29 +1,61 @@
-import * as React from "react"
-import { Link } from "gatsby"
-import { StaticImage } from "gatsby-plugin-image"
+import React from "react"
+import { graphql } from "gatsby"
+import Layout from "../components/Layout"
+import Seo from "../components/SEO"
+import HomepageBanner from "../components/HomepageBanner"
+import MainContent from "../components/MainContent"
 
-import Layout from "../components/layout"
-import Seo from "../components/seo"
+const Homepage = ({ data }) => {
+  if (!data) return null
+  const document = data.allPrismicHomepage.edges[0].node.data
 
-const IndexPage = () => (
-  <Layout>
-    <Seo title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <StaticImage
-      src="../images/gatsby-astronaut.png"
-      width={300}
-      quality={95}
-      formats={["AUTO", "WEBP", "AVIF"]}
-      alt="A Gatsby astronaut"
-      style={{ marginBottom: `1.45rem` }}
-    />
-    <p>
-      <Link to="/page-2/">Go to page 2</Link> <br />
-      <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
-    </p>
-  </Layout>
-)
+  const bannerContent = {
+    title: document.banner_title,
+    description: document.banner_description,
+    link: document.banner_link,
+    linkLabel: document.banner_link_label,
+    background: document.banner_background,
+  }
 
-export default IndexPage
+  return (
+    <Layout isHomepage>
+      <Seo title="Home" />
+      <HomepageBanner bannerContent={bannerContent} />
+      <MainContent />
+    </Layout>
+  )
+}
+
+export const query = graphql`
+  query Homepage {
+    allPrismicHomepage {
+      edges {
+        node {
+          data {
+            banner_title {
+              raw
+            }
+            banner_description {
+              raw
+            }
+            banner_link {
+              url
+              type
+              uid
+            }
+            banner_link_label {
+              raw
+            }
+            banner_background {
+              url
+              gatsbyImageData
+              alt
+            }
+          }
+        }
+      }
+    }
+  }
+`
+
+export default Homepage
