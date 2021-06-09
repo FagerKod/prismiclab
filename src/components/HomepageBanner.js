@@ -5,6 +5,7 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 const HomepageBanner = ({ bannerContent }) => {
   const image = getImage(bannerContent.background.gatsbyImageData)
+  //console.log("content", bannerContent.background.gatsbyImageData)
 
   return (
     <section
@@ -13,7 +14,7 @@ const HomepageBanner = ({ bannerContent }) => {
         backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url(${bannerContent.background.url})`,
       }}
     >
-      <img src={bannerContent.background.url} alt="IMG" />
+      <img src={bannerContent.background.url} alt="hej" />
       <GatsbyImage image={image} alt="hej" />
       <div className="banner-content container">
         <h2 className="banner-title">
