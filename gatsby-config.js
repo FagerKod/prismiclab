@@ -32,8 +32,7 @@ module.exports = {
       resolve: "gatsby-source-prismic",
       options: {
         repositoryName: "prismictestskott",
-        accessToken:
-          "MC5ZTUNwX0JFQUFDVUEweEN0.M--_vVV-77-977-9Je-_vRMl77-977-977-9AO-_ve-_vQFi77-9PO-_ve-_vQ1AMO-_vSJPUEBa77-9",
+        accessToken: process.env.PRISMIC_ACCESS_TOKEN,
         linkResolver: doc => `/${doc.id}`,
         schemas: {
           homepage: require("./custom_types/homepage.json"),
@@ -43,7 +42,8 @@ module.exports = {
       },
     },
     "gatsby-plugin-image",
-
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
     `gatsby-plugin-gatsby-cloud`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
