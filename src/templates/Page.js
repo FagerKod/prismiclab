@@ -3,6 +3,8 @@ import { graphql } from "gatsby"
 import Layout from "../components/Layout"
 import Seo from "../components/SEO"
 import SliceZone from "../components/SliceZone"
+import { withPrismicPreview } from "gatsby-plugin-prismic-previews"
+import { linkResolver } from "../utils/linkResolver"
 
 const Page = ({ data }) => {
   if (!data) return null
@@ -28,6 +30,7 @@ export const query = graphql`
       edges {
         node {
           uid
+          _previewable
           data {
             body {
               ... on PrismicPageDataBodyText {
@@ -118,4 +121,9 @@ export const query = graphql`
   }
 `
 
-export default Page
+export default withPrismicPreview(Page, [
+  {
+    repositoryName: "prismictestskott",
+    linkResolver,
+  },
+])

@@ -44,6 +44,14 @@ module.exports = {
         },
       },
     },
+    {
+      resolve: "gatsby-plugin-prismic-previews",
+      options: {
+        repositoryName: "prismictestskott",
+        accessToken: process.env.PRISMIC_ACCESS_TOKEN,
+        toolbar: "new",
+      },
+    },
     "gatsby-plugin-image",
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,

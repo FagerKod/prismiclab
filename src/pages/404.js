@@ -1,16 +1,29 @@
-import React from "react"
-import Layout from "../components/Layout"
-import Seo from "../components/SEO"
+import * as React from "react"
+import {
+  withPrismicUnpublishedPreview,
+  componentResolverFromMap,
+} from "gatsby-plugin-prismic-previews"
 
-const NotFoundPage = () => (
-  <Layout>
-    <Seo title="Not found" />
-    <div className="container">
-      <h1>Oh no!</h1>
-      <h3>We can't seem to find the page you're looking for.</h3>
-      <br />
+import { linkResolver } from "../utils/linkResolver"
+
+import Page from "../templates/Page"
+import Homepage from "./index"
+
+const NotFoundPage = () => {
+  return (
+    <div>
+      <h1>TRASIGT</h1>
     </div>
-  </Layout>
-)
+  )
+}
 
-export default NotFoundPage
+export default withPrismicUnpublishedPreview(NotFoundPage, [
+  {
+    repositoryName: "prismictestskott",
+    linkResolver,
+    componentResolver: componentResolverFromMap({
+      page: Page,
+      homepage: Homepage,
+    }),
+  },
+])

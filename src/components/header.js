@@ -32,6 +32,7 @@ const Header = ({ isHomepage, navigation }) => {
 
 export const query = graphql`
   fragment HeaderQuery on PrismicNavigation {
+    _previewable
     data {
       top_navigation {
         link {

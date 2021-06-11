@@ -4,6 +4,8 @@ import Layout from "../components/Layout"
 import Seo from "../components/SEO"
 import HomepageBanner from "../components/HomepageBanner"
 import SliceZone from "../components/SliceZone"
+import { withPrismicPreview } from "gatsby-plugin-prismic-previews"
+import { linkResolver } from "../utils/linkResolver"
 
 const Homepage = ({ data }) => {
   if (!data) return null
@@ -38,6 +40,7 @@ export const query = graphql`
     allPrismicHomepage {
       edges {
         node {
+          _previewable
           data {
             seo_title
             seo_description {
@@ -152,4 +155,9 @@ export const query = graphql`
   }
 `
 
-export default Homepage
+export default withPrismicPreview(Homepage, [
+  {
+    repositoryName: "prismictestskott",
+    linkResolver,
+  },
+])
