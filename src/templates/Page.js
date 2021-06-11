@@ -2,69 +2,35 @@ import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/Layout"
 import Seo from "../components/SEO"
-import HomepageBanner from "../components/HomepageBanner"
 import SliceZone from "../components/SliceZone"
 
-const Homepage = ({ data }) => {
+const Page = ({ data }) => {
   if (!data) return null
-  const document = data.allPrismicHomepage.edges[0].node.data
-
-  const bannerContent = {
-    title: document.banner_title,
-    description: document.banner_description,
-    link: document.banner_link,
-    linkLabel: document.banner_link_label,
-    background: document.banner_background,
-  }
-
-  const seoContent = {
-    title: document.seo_title,
-    description: document.seo_description.text,
-  }
-
+  const document = data.allPrismicPage.edges[0].node
   const prismicNavigation = data.prismicNavigation
+  console.log("prismicNav PAGE", prismicNavigation)
+
+  const capitalizeFirstLetter = input => {
+    return input[0].toUpperCase() + input.slice(1)
+  }
 
   return (
-    <Layout isHomepage navigation={prismicNavigation}>
-      <Seo title={seoContent.title} description={seoContent.description} />
-      <HomepageBanner bannerContent={bannerContent} />
-      <SliceZone sliceZone={document.body} />
+    <Layout navigation={prismicNavigation}>
+      <Seo title={capitalizeFirstLetter(document.uid)} />
+      <SliceZone sliceZone={document.data.body} />
     </Layout>
   )
 }
 
 export const query = graphql`
-  query Homepage {
-    allPrismicHomepage {
+  query PageQuery($uid: String) {
+    allPrismicPage(filter: { uid: { eq: $uid } }) {
       edges {
         node {
+          uid
           data {
-            seo_title
-            seo_description {
-              text
-            }
-            banner_title {
-              raw
-              text
-            }
-            banner_description {
-              raw
-            }
-            banner_link {
-              url
-              type
-              uid
-            }
-            banner_link_label {
-              raw
-            }
-            banner_background {
-              url
-              gatsbyImageData
-              alt
-            }
             body {
-              ... on PrismicHomepageDataBodyText {
+              ... on PrismicPageDataBodyText {
                 slice_type
                 primary {
                   columns
@@ -73,7 +39,7 @@ export const query = graphql`
                   }
                 }
               }
-              ... on PrismicHomepageDataBodyQuote {
+              ... on PrismicPageDataBodyQuote {
                 slice_type
                 primary {
                   quote {
@@ -81,7 +47,7 @@ export const query = graphql`
                   }
                 }
               }
-              ... on PrismicHomepageDataBodyFullWidthImage {
+              ... on PrismicPageDataBodyFullWidthImage {
                 slice_type
                 primary {
                   full_width_image {
@@ -91,7 +57,7 @@ export const query = graphql`
                   }
                 }
               }
-              ... on PrismicHomepageDataBodyImageGallery {
+              ... on PrismicPageDataBodyImageGallery {
                 slice_type
                 primary {
                   gallery_title {
@@ -117,7 +83,7 @@ export const query = graphql`
                   }
                 }
               }
-              ... on PrismicHomepageDataBodyImageHighlight {
+              ... on PrismicPageDataBodyImageHighlight {
                 slice_type
                 primary {
                   featured_image {
@@ -152,4 +118,4 @@ export const query = graphql`
   }
 `
 
-export default Homepage
+export default Page

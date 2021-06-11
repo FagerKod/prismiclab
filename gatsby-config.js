@@ -36,7 +36,7 @@ module.exports = {
       options: {
         repositoryName: "prismictestskott",
         accessToken: process.env.PRISMIC_ACCESS_TOKEN,
-        linkResolver: doc => `/${doc.id}`,
+        linkResolver: linkResolver,
         schemas: {
           homepage: require("./custom_types/homepage.json"),
           navigation: require("./custom_types/navigation.json"),
