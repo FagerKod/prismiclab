@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 import Layout from "../components/Layout"
 import Seo from "../components/SEO"
 import HomepageBanner from "../components/HomepageBanner"
-import MainContent from "../components/MainContent"
+import SliceZone from "../components/SliceZone"
 
 const Homepage = ({ data }) => {
   if (!data) return null
@@ -21,7 +21,7 @@ const Homepage = ({ data }) => {
     <Layout isHomepage>
       <Seo title="Home" />
       <HomepageBanner bannerContent={bannerContent} />
-      <MainContent />
+      <SliceZone sliceZone={document.body} />
     </Layout>
   )
 }
@@ -50,6 +50,85 @@ export const query = graphql`
               url
               gatsbyImageData
               alt
+            }
+            body {
+              ... on PrismicHomepageDataBodyText {
+                slice_type
+                primary {
+                  columns
+                  content {
+                    raw
+                  }
+                }
+              }
+              ... on PrismicHomepageDataBodyQuote {
+                slice_type
+                primary {
+                  quote {
+                    raw
+                  }
+                }
+              }
+              ... on PrismicHomepageDataBodyFullWidthImage {
+                slice_type
+                primary {
+                  full_width_image {
+                    url
+                    alt
+                    gatsbyImageData
+                  }
+                }
+              }
+              ... on PrismicHomepageDataBodyImageGallery {
+                slice_type
+                primary {
+                  gallery_title {
+                    raw
+                  }
+                }
+                items {
+                  image {
+                    url
+                    alt
+                    gatsbyImageData
+                  }
+                  image_description {
+                    raw
+                  }
+                  link {
+                    url
+                    type
+                    uid
+                  }
+                  link_label {
+                    raw
+                  }
+                }
+              }
+              ... on PrismicHomepageDataBodyImageHighlight {
+                slice_type
+                primary {
+                  featured_image {
+                    url
+                    gatsbyImageData
+                    alt
+                  }
+                  title {
+                    raw
+                  }
+                  description {
+                    raw
+                  }
+                  link {
+                    url
+                    type
+                    uid
+                  }
+                  link_label {
+                    raw
+                  }
+                }
+              }
             }
           }
         }
