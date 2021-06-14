@@ -4,7 +4,7 @@ import Layout from "../components/Layout"
 import Seo from "../components/SEO"
 import SliceZone from "../components/SliceZone"
 import { withPrismicPreview } from "gatsby-plugin-prismic-previews"
-import { linkResolver } from "../utils/linkResolver"
+import linkResolver from "../utils/linkResolver"
 
 const Page = ({ data }) => {
   if (!data) return null

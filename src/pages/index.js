@@ -5,11 +5,13 @@ import Seo from "../components/SEO"
 import HomepageBanner from "../components/HomepageBanner"
 import SliceZone from "../components/SliceZone"
 import { withPrismicPreview } from "gatsby-plugin-prismic-previews"
-import { linkResolver } from "../utils/linkResolver"
+import linkResolver from "../utils/linkResolver"
 
 const Homepage = ({ data }) => {
   if (!data) return null
   const document = data.allPrismicHomepage.edges[0].node.data
+
+  console.log("linkresolver startsida", linkResolver)
 
   const bannerContent = {
     title: document.banner_title,

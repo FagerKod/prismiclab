@@ -10,11 +10,6 @@ const Layout = ({ isHomepage, children, navigation }) => (
     <Header isHomepage={isHomepage} navigation={navigation} />
     {children}
     <Footer />
-    <script
-      async
-      defer
-      src="https://static.cdn.prismic.io/prismic.js?new=true&repo=prismictestskott"
-    ></script>
   </>
 )
 

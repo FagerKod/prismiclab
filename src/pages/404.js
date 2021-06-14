@@ -4,7 +4,7 @@ import {
   componentResolverFromMap,
 } from "gatsby-plugin-prismic-previews"
 
-import { linkResolver } from "../utils/linkResolver"
+import linkResolver from "../utils/linkResolver"
 
 import Page from "../templates/Page"
 import Homepage from "./index"
