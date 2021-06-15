@@ -37,6 +37,7 @@ module.exports = {
         repositoryName: "prismictestskott",
         accessToken: process.env.PRISMIC_ACCESS_TOKEN,
         linkResolver: linkResolver,
+        lang: "*",
         schemas: {
           homepage: require("./custom_types/homepage.json"),
           navigation: require("./custom_types/navigation.json"),
@@ -49,6 +50,7 @@ module.exports = {
       options: {
         repositoryName: "prismictestskott",
         accessToken: process.env.PRISMIC_ACCESS_TOKEN,
+        lang: "*",
         toolbar: "new",
       },
     },

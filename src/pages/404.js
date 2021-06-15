@@ -7,7 +7,7 @@ import {
 import linkResolver from "../utils/linkResolver"
 
 import Page from "../templates/Page"
-import Homepage from "./index"
+import Homepage from "../templates/Homepage"
 
 const NotFoundPage = () => {
   return (
