@@ -7,6 +7,8 @@ import Layout from "../UI/Layout"
 import Seo from "../UI/Seo"
 
 const Page = ({ data }) => {
+  console.log("data page", data)
+
   if (!data) return null
   const document = data.allPrismicPage.edges[0].node
   const prismicNavigation = data.prismicNavigation
