@@ -7,7 +7,7 @@ import Layout from "../UI/Layout"
 import Seo from "../UI/Seo"
 
 const Page = ({ data }) => {
-  console.log("data page", data)
+  console.log("data.allPrismicPage page", data.allPrismicPage)
 
   if (!data) return null
   const document = data.allPrismicPage.edges[0].node
