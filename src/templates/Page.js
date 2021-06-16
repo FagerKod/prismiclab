@@ -8,7 +8,7 @@ import Seo from "../UI/Seo"
 
 const Page = ({ data }) => {
   console.log("data.allPrismicPage page", data.allPrismicPage)
-  console.log("data page", data.prismicPage.data.body)
+  console.log("data page", data.prismicPage)
 
   if (!data) return null
   const document = data.allPrismicPage.edges[0].node
