@@ -1,10 +1,10 @@
 import React from "react"
 import { graphql } from "gatsby"
-import Layout from "../components/Layout"
-import Seo from "../components/SEO"
 import SliceZone from "../components/SliceZone"
 import { withPrismicPreview } from "gatsby-plugin-prismic-previews"
 import linkResolver from "../utils/linkResolver"
+import Layout from "../components/Layout"
+import Seo from "../components/Seo"
 
 const Page = ({ data }) => {
   if (!data) return null

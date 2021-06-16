@@ -1,11 +1,11 @@
 import React from "react"
 import { graphql } from "gatsby"
-import Layout from "../components/Layout"
-import Seo from "../components/SEO"
 import HomepageBanner from "../components/HomepageBanner"
 import SliceZone from "../components/SliceZone"
 import { withPrismicPreview } from "gatsby-plugin-prismic-previews"
 import linkResolver from "../utils/linkResolver"
+import Layout from "../components/Layout"
+import Seo from "../components/Seo"
 
 const Homepage = ({ data }) => {
   if (!data) return null

@@ -1,11 +1,11 @@
-import React from 'react'
-import { Helmet } from 'react-helmet'
-import { StaticQuery, graphql } from 'gatsby'
+import React from "react"
+import { Helmet } from "react-helmet"
+import { StaticQuery, graphql } from "gatsby"
 
-const SEO = ({ description, title }) => (
+const Seo = ({ description, title }) => (
   <StaticQuery
     query={`${SeoQuery}`}
-    render={(data) => {
+    render={data => {
       const metaTitle = title
         ? `${title} | ${data.site.siteMetadata.title}`
         : data.site.siteMetadata.title
@@ -22,14 +22,14 @@ const SEO = ({ description, title }) => (
 )
 
 const SeoQuery = graphql`
-query {
-  site {
-    siteMetadata {
-      title
-      description
+  query {
+    site {
+      siteMetadata {
+        title
+        description
+      }
     }
   }
-}
 `
 
-export default SEO
+export default Seo
