@@ -1,6 +1,4 @@
 const linkResolver = doc => {
-  console.log("linkResolver körs", doc.type, doc.lang)
-
   if (doc.type === "page") {
     if (doc.lang !== "en-us") {
       return `/sv-se/${doc.uid}`

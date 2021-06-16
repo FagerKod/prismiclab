@@ -4,8 +4,8 @@ import HomepageBanner from "../components/HomepageBanner"
 import SliceZone from "../components/SliceZone"
 import { withPrismicPreview } from "gatsby-plugin-prismic-previews"
 import linkResolver from "../utils/linkResolver"
-import Layout from "../components/Layout"
-import Seo from "../components/Seo"
+import Layout from "../UI/Layout"
+import Seo from "../UI/Seo"
 
 const Homepage = ({ data }) => {
   if (!data) return null
