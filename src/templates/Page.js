@@ -8,11 +8,11 @@ import Seo from "../UI/Seo"
 
 const Page = ({ data }) => {
   console.log("data.allPrismicPage page", data.allPrismicPage)
+  console.log("data page", data.allPrismicPage)
 
   if (!data) return null
   const document = data.allPrismicPage.edges[0].node
   const prismicNavigation = data.prismicNavigation
-  console.log("prismicNav PAGE", prismicNavigation)
 
   const capitalizeFirstLetter = input => {
     return input[0].toUpperCase() + input.slice(1)
