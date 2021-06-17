@@ -6,7 +6,6 @@ const Header = ({ isHomepage, navigation }) => {
   if (!navigation) return null
   const homepageClass = isHomepage ? "homepage-header" : ""
   const topNav = navigation.data.top_navigation
-  console.log("topNav", topNav)
 
   return (
     <header className={`site-header ${homepageClass}`}>

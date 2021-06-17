@@ -7,20 +7,20 @@ import Layout from "../UI/Layout"
 import Seo from "../UI/Seo"
 
 const Page = ({ data }) => {
-  console.log("data.allPrismicPage page", data.allPrismicPage)
-  console.log("data page", data.prismicPage)
-
-  if (!data) return null
-  const document = data.allPrismicPage.edges[0].node
+  const document = data.allPrismicPage.edges[0].node || data.prismicPage.data
   const prismicNavigation = data.prismicNavigation
+
+  console.log("data.allPrismicPage page", data.allPrismicPage)
+  console.log("data.prismicPage page", data.prismicPage)
 
   const capitalizeFirstLetter = input => {
     return input[0].toUpperCase() + input.slice(1)
   }
 
+  if (!data) return null
   return (
     <Layout navigation={prismicNavigation}>
-      <Seo title={capitalizeFirstLetter(document.uid)} />
+      {/* <Seo title={capitalizeFirstLetter(document.uid)} /> */}
       <SliceZone sliceZone={document.data.body} />
     </Layout>
   )
