@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { graphql } from "gatsby"
 import SliceZone from "../components/SliceZone"
 import { withPrismicPreview } from "gatsby-plugin-prismic-previews"
@@ -10,8 +10,14 @@ const Page = ({ data }) => {
   console.log("data.allPrismicPage page", data.allPrismicPage)
   console.log("data.prismicPage page", !!data.prismicPage)
 
-  const document = data.allPrismicPage.edges[0].node || data.prismicPage.data
+  const previewData = !!data.prismicPage
+
+  const document = previewData
+    ? data.prismicPage.data
+    : data.allPrismicPage.edges[0].node.data
   const prismicNavigation = data.prismicNavigation
+
+  console.log("document", document)
 
   const capitalizeFirstLetter = input => {
     return input[0].toUpperCase() + input.slice(1)
@@ -21,7 +27,7 @@ const Page = ({ data }) => {
   return (
     <Layout navigation={prismicNavigation}>
       {/* <Seo title={capitalizeFirstLetter(document.uid)} /> */}
-      <SliceZone sliceZone={document.data.body} />
+      <SliceZone sliceZone={document.body} />
     </Layout>
   )
 }
