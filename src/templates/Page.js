@@ -7,11 +7,11 @@ import Layout from "../UI/Layout"
 import Seo from "../UI/Seo"
 
 const Page = ({ data }) => {
+  console.log("data.allPrismicPage page", data.allPrismicPage)
+  console.log("data.prismicPage page", !!data.prismicPage)
+
   const document = data.allPrismicPage.edges[0].node || data.prismicPage.data
   const prismicNavigation = data.prismicNavigation
-
-  console.log("data.allPrismicPage page", data.allPrismicPage)
-  console.log("data.prismicPage page", data.prismicPage)
 
   const capitalizeFirstLetter = input => {
     return input[0].toUpperCase() + input.slice(1)
